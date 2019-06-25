@@ -1,11 +1,16 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Button } from 'react-native';
 
-export default () => (
-  <View style={styles.container}>
-    <Text>Scan Screen</Text>
-  </View>
-)
+import { ScanButton } from '../components';
+
+export default () => {
+  return (
+    <View style={styles.container}>
+      <Text>Scan your location for Prime Real Estate</Text>
+      <ScanButton />
+    </View>
+  )
+}
 
 const styles = StyleSheet.create({
   container: {

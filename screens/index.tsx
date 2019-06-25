@@ -1,5 +1,9 @@
 import Scan from './Scan';
+import History from './History';
+import Liked from './Liked';
 
 export {
-  Scan
+  Scan,
+  History,
+  Liked
 }
