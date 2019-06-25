@@ -1,9 +1,13 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
+import { HistoryList } from '../components';
+
 export default () => (
   <View style={styles.container}>
     <Text>History Screen</Text>
+
+    <HistoryList />
   </View>
 )
 
