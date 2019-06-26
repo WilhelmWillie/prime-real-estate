@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Button } from 'react-native';
 
+import AppContext from '../contexts/AppContext';
+
 export default () => {
+  const appContext = useContext(AppContext);
+
   return (
-    <Button onPress={() => console.log('Scan Button')} title='Scan' />
+    <Button onPress={() => {}} title='Scan' />
   )
 }
