@@ -1,17 +1,18 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 
-import { ScanButton } from '../components';
+import appStore from '../store';
 
-import AppContext from '../contexts/AppContext';
+import { Result, ScanButton } from '../components';
 
 export default () => {
-  const appContext = useContext(AppContext);
+  const [appState, appActions] = appStore();
+  const { result } = appState;
 
   return (
     <View style={styles.container}>
       <Text>Scan your location for Prime Real Estate</Text>
-      <Text>{appContext.result && appContext.result.neighborhood}</Text>
+      <Result result={result} />
       <ScanButton />
     </View>
   )

@@ -1,12 +1,21 @@
 import React, { useContext } from 'react';
 import { Button } from 'react-native';
 
-import AppContext from '../contexts/AppContext';
+import appStore from '../store';
 
 export default () => {
-  const appContext = useContext(AppContext);
+  const [appState, appActions] = appStore();
+
+  const handlePress = () => {
+    appActions.scan.setResult({
+      neighborhood: 'Mission District',
+      street: 'Valencia Street',
+      avgValue: 12345
+    })
+  }
 
   return (
-    <Button onPress={() => {}} title='Scan' />
+    <Button onPress={handlePress} title='Scan' />
   )
 }
+ 
