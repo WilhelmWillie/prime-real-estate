@@ -6,7 +6,7 @@ import appStore from '../store';
 import { Result, ScanButton } from '../components';
 
 export default () => {
-  const [appState, appActions] = appStore();
+  const appState = appStore()[0];
   const { result } = appState;
 
   return (
