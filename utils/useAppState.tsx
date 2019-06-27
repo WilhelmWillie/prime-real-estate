@@ -30,11 +30,11 @@ function associateActions(store, actions) {
   return associatedActions;
 }
 
-const appStateHook = (React, initialState, actions) => {
+const useAppState = (React, initialState, actions) => {
   const store = { state: initialState, listeners: [], setState, actions };
   store.setState = setState.bind(store);
   store.actions = associateActions(store, actions);
   return useCustom.bind(store, React);
 };
 
-export default appStateHook;
+export default useAppState;

@@ -1,5 +1,5 @@
 import React from 'react';
-import appStateHook from '../utils/appStateHook';
+import useAppState from '../utils/useAppState';
 
 import * as actions from "../actions";
 
@@ -13,6 +13,6 @@ const initialState = {
   history: [],
 };
 
-const appStore = appStateHook(React, initialState, actions);
+const appStore = useAppState(React, initialState, actions);
 
 export default appStore;
