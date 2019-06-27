@@ -1,11 +1,13 @@
+import ScanHero from './ScanHero';
 import ScanButton from './ScanButton';
+import ScanResult from './ScanResult';
 import HistoryList from './HistoryList';
 import LikedList from './LikedList';
-import Result from './Result';
 
 export {
+  ScanHero,
   ScanButton,
+  ScanResult,
   HistoryList,
   LikedList,
-  Result,
 }

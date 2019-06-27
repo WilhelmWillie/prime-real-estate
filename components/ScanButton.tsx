@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Button } from 'react-native';
+import { StyleSheet, View, Button } from 'react-native';
 
 import appStore from '../store';
 
@@ -11,6 +11,26 @@ export default () => {
   }
 
   return (
-    <Button onPress={handlePress} title='Scan' />
+    <View style={styles.container}>
+      <Button onPress={handlePress} title='Scan' />
+    </View>
   )
 }
+
+const styles = StyleSheet.create({
+  container: {
+    width: '80%',
+    height: 60,
+    color: 'white',
+    backgroundColor: 'white',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: -30,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.3,
+    shadowRadius: 2,
+    borderRadius: 999,
+    zIndex: 10,
+  },
+});
