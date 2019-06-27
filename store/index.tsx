@@ -9,25 +9,8 @@ const initialState = {
     street: '',
     avgValue: 0,
   },
-  liked: [
-    {
-      key: 'ITEM-0',
-      address: '1234 Main Street',
-      avgValue: 1200000
-    },
-  ],
-  history: [
-    {
-      key: 'ITEM-0',
-      address: '1234 Main Street',
-      avgValue: 1200000
-    },
-    {
-      key: 'ITEM-1',
-      address: '1234 Main Avenue',
-      avgValue: 2000000
-    },
-  ],
+  liked: [],
+  history: [],
 };
 
 const appStore = appStateHook(React, initialState, actions);

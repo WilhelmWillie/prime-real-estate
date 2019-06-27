@@ -4,7 +4,7 @@ import { Text, FlatList } from 'react-native';
 import appStore from '../store';
 
 export default () => {
-  const [appState, appActions] = appStore();
+  const [appState] = appStore();
 
   const renderLikedItems = (item) => {
     return (<Text>{item.address} {item.avgValue}</Text>)
