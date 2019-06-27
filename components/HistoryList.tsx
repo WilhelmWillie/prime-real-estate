@@ -1,15 +1,20 @@
 import React, { useEffect } from 'react';
-import { Text, FlatList } from 'react-native';
+import { View, Text, Button, FlatList } from 'react-native';
 
 import appStore from '../store';
 
 export default () => {
-  const [appState] = appStore();
+  const [appState, appActions] = appStore();
 
   const keyExtractor = (item, index) => index.toString();
 
   const renderHistoryItems = (item) => {
-    return (<Text>{item.neighborhood} {item.street} {item.avgValue}</Text>)
+    return (
+      <View>
+        <Text>{item.neighborhood} {item.street} {item.avgValue}</Text>
+        <Button onPress={()=>{ appActions.like.likeItem(item)}} title="Like" />
+      </View>
+    )
   }
 
   return (

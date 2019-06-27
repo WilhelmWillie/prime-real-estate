@@ -1,3 +1,4 @@
-import *  as scan from './scan';
+import * as scan from './scan';
+import * as like from './like';
 
-export { scan }
+export { scan, like }
