@@ -1,22 +1,40 @@
-import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { StyleSheet, Animated, View, Text } from 'react-native';
 
 import ScanButton from './ScanButton';
 
 export default ({ result }) => {
+  const [heightAnim, setHeightAnim] = useState(new Animated.Value(300));
+
+  useEffect(() => {
+    if (result) {
+      Animated.timing(
+        heightAnim,
+        {
+          toValue: 200,
+          duration: 400
+        }
+      ).start()
+    }
+  }, [result ? 1 : 0]);
+
   return (
-    <View style={styles(result).container}>
+    <Animated.View style={{
+      ...styles(result).container,
+      height: heightAnim
+    }}>
       <Text style={styles(result).description}>{result ? 'Scan Result' : 'Prime Real Estate'}</Text>
 
       <ScanButton />
-    </View>
+    </Animated.View>
   )
 }
+
+// 34 : 50
 
 const styles = (hasResult: boolean) => StyleSheet.create({
   container: {
     width: '100%',
-    height: hasResult ? '34%' : '50%',
     paddingTop: 30,
     color: 'white',
     backgroundColor: '#FFA25D',
