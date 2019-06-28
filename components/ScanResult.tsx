@@ -1,22 +1,34 @@
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, Button } from 'react-native';
 
-export default ({result}) => (
-  <View style={styles.container}>
-    {
-      result ? (
-        <View style={styles.card}>
-          <Text style={styles.neighborhood}>{result.neighborhood}</Text>
-          <Text style={styles.street}>{result.street}</Text>
-          <Text style={styles.avgValueHeader}>Average Home Price</Text>
-          <Text style={styles.avgValue}>{result.avgValue}</Text>
-        </View>
-      ) : (
-        <Text>...</Text>
-      )
-    }
-  </View>
-);
+import appStore from '../store';
+
+export default ({result}) => {
+  const appActions = appStore()[1];
+
+  const handleLikePress = () => {
+    appActions.like.likeItem(result);
+  }
+
+  return (
+    <View style={styles.container}>
+      {
+        result ? (
+          <View style={styles.card}>
+            <Text style={styles.neighborhood}>{result.neighborhood}</Text>
+            <Text style={styles.street}>{result.street}</Text>
+            <Text style={styles.avgValueHeader}>Average Home Price</Text>
+            <Text style={styles.avgValue}>{result.avgValue}</Text>
+
+            <Button onPress={handleLikePress} title="Like" />
+          </View>
+        ) : (
+          <Text>...</Text>
+        )
+      }
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
