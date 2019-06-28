@@ -21,16 +21,16 @@ export default ({ result }) => {
       ).start()
     }
   }, [result ? 1 : 0]);
-  
+
   return (
     <Animated.View style={{
-      ...styles(result).container,
+      ...styles.container,
       height: heightAnim.interpolate({
         inputRange: [RESULT_HEIGHT, DEFAULT_HEIGHT],
         outputRange: [`${RESULT_HEIGHT}%`, `${DEFAULT_HEIGHT}%`]
       })
     }}>
-      <Text style={styles(result).description}>{result ? 'Scan Result' : 'Prime Real Estate'}</Text>
+      <Text style={styles.description}>{result ? 'Scan Result' : 'Prime Real Estate'}</Text>
 
       <ScanButton />
     </Animated.View>
@@ -39,7 +39,7 @@ export default ({ result }) => {
 
 // 34 : 50
 
-const styles = (hasResult: boolean) => StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     width: '100%',
     paddingTop: 30,
