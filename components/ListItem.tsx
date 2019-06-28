@@ -1,13 +1,15 @@
 import React from 'react';
 import { StyleSheet, View, TouchableWithoutFeedback as Touchable, Text, Button } from 'react-native';
+import { withNavigation } from 'react-navigation';
 
 import appStore from '../store';
 
-export default ({item}) => {
+const ListItem = ({navigation, item}) => {
   const appActions = appStore()[1];
 
   const handlePress = () => {
     appActions.listItem.viewResult(item);
+    navigation.navigate('Scan');
   }
 
   return (
@@ -20,6 +22,8 @@ export default ({item}) => {
     </Touchable>
   )
 }
+
+export default withNavigation(ListItem);
 
 const styles = StyleSheet.create({
   container: {
@@ -53,10 +57,3 @@ const styles = StyleSheet.create({
     color: '#256CE1'
   }
 })
-
-/*
-<View>
-  <Text>{item.neighborhood} {item.street} {item.avgValue}</Text>
-  <Button onPress={()=>{ appActions.like.likeItem(item)}} title="Like" />
-</View>
-*/

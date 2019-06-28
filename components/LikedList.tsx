@@ -1,6 +1,7 @@
 import React from 'react';
-import { View, Text, FlatList } from 'react-native';
+import { StyleSheet, View, Text, FlatList } from 'react-native';
 
+import ListItem from './ListItem';
 import appStore from '../store';
 
 export default () => {
@@ -9,15 +10,26 @@ export default () => {
   const keyExtractor = (item, index) => index.toString();
 
   const renderLikedItems = (item) => {
-    return (<Text>{item.neighborhood} {item.street} {item.avgValue}</Text>)
+    return (
+      <ListItem item={item} />
+    )
   }
 
   return (
-    <FlatList
-      data={appState.liked}
-      extraData={appState}
-      renderItem={({item}) => renderLikedItems(item)}
-      keyExtractor={keyExtractor}
-    />
+    <View style={styles.container}>
+      <FlatList
+        data={appState.liked}
+        extraData={appState}
+        renderItem={({item}) => renderLikedItems(item)}
+        keyExtractor={keyExtractor}
+      />
+    </View>
   )
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    width: '100%',
+  }
+});
