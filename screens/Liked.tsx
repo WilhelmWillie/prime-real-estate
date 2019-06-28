@@ -1,12 +1,11 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-import { LikedList } from '../components';
+import { ScreenHeader, LikedList } from '../components';
 
 export default () => (
   <View style={styles.container}>
-    <Text>Liked Screen</Text>
-
+    <ScreenHeader title="Liked" />
     <LikedList />
   </View>
 )

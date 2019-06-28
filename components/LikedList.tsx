@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, FlatList } from 'react-native';
+import { View, Text, FlatList } from 'react-native';
 
 import appStore from '../store';
 

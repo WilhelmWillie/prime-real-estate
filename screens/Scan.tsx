@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Button } from 'react-native';
 
 import appStore from '../store';
 
-import { ScanHero, ScanButton, ScanResult } from '../components';
+import { ScanHero, ScanResult } from '../components';
 
 export default () => {
   const appState = appStore()[0];
@@ -11,8 +11,7 @@ export default () => {
 
   return (
     <View style={styles.container}>
-      <ScanHero />
-      <ScanButton />
+      <ScanHero result={result} />
       <ScanResult result={result} />
     </View>
   )

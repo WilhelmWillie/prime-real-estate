@@ -25,7 +25,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#F6F6F6',
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: -30,
     padding: 20,
   },
   card: {

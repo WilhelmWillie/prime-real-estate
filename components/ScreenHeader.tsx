@@ -1,23 +1,19 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 
-import ScanButton from './ScanButton';
-
-export default ({ result }) => {
+export default ({ title }) => {
   return (
-    <View style={styles(result).container}>
-      <Text style={styles(result).description}>{result ? 'Scan Result' : 'Prime Real Estate'}</Text>
-
-      <ScanButton />
+    <View style={styles.container}>
+      <Text style={styles.title}>{title}</Text>
     </View>
   )
 }
 
-const styles = (hasResult: boolean) => StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     width: '100%',
-    height: hasResult ? '34%' : '50%',
-    paddingTop: 30,
+    paddingTop: 50,
+    paddingBottom: 30,
     color: 'white',
     backgroundColor: '#FFA25D',
     alignItems: 'center',
@@ -25,7 +21,7 @@ const styles = (hasResult: boolean) => StyleSheet.create({
     position: 'relative',
     zIndex: 10,
   },
-  description: {
+  title: {
     color: 'white',
     fontSize: 34,
     fontWeight: '700',
