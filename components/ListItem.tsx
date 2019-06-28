@@ -1,17 +1,23 @@
 import React from 'react';
-import { StyleSheet, View, Text, Button } from 'react-native';
+import { StyleSheet, View, TouchableWithoutFeedback as Touchable, Text, Button } from 'react-native';
 
 import appStore from '../store';
 
 export default ({item}) => {
   const appActions = appStore()[1];
 
+  const handlePress = () => {
+    appActions.listItem.viewResult(item);
+  }
+
   return (
-    <View style={styles.container}>
-      <Text style={styles.neighborhood}>{item.neighborhood}</Text>
-      <Text style={styles.street}>{item.street}</Text>
-      <Text style={styles.avgValue}>{item.avgValue}</Text>
-    </View>
+    <Touchable onPress={handlePress}>
+      <View style={styles.container}>
+        <Text style={styles.neighborhood}>{item.neighborhood}</Text>
+        <Text style={styles.street}>{item.street}</Text>
+        <Text style={styles.avgValue}>{item.avgValue}</Text>
+      </View>
+    </Touchable>
   )
 }
 
