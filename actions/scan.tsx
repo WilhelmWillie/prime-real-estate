@@ -22,6 +22,6 @@ export const getResult = store => {
   }
 
   const newHistory = store.state.history;
-  newHistory.push(result);
+  newHistory.unshift(result);
   store.setState({ history: newHistory, result });
 };
