@@ -3,25 +3,32 @@ import { StyleSheet, Animated, View, Text } from 'react-native';
 
 import ScanButton from './ScanButton';
 
+const DEFAULT_HEIGHT = 50;
+const RESULT_HEIGHT = 34;
+const ANIMATION_DURATION = 400;
+
 export default ({ result }) => {
-  const [heightAnim, setHeightAnim] = useState(new Animated.Value(300));
+  const heightAnim = useState(new Animated.Value(DEFAULT_HEIGHT))[0];
 
   useEffect(() => {
     if (result) {
       Animated.timing(
         heightAnim,
         {
-          toValue: 200,
-          duration: 400
+          toValue: RESULT_HEIGHT,
+          duration: ANIMATION_DURATION
         }
       ).start()
     }
   }, [result ? 1 : 0]);
-
+  
   return (
     <Animated.View style={{
       ...styles(result).container,
-      height: heightAnim
+      height: heightAnim.interpolate({
+        inputRange: [RESULT_HEIGHT, DEFAULT_HEIGHT],
+        outputRange: [`${RESULT_HEIGHT}%`, `${DEFAULT_HEIGHT}%`]
+      })
     }}>
       <Text style={styles(result).description}>{result ? 'Scan Result' : 'Prime Real Estate'}</Text>
 
