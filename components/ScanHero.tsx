@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, Animated, View, Text } from 'react-native';
+import { StyleSheet, Animated, Text } from 'react-native';
 
 import ScanButton from './ScanButton';
 
@@ -36,8 +36,6 @@ export default ({ result }) => {
     </Animated.View>
   )
 }
-
-// 34 : 50
 
 const styles = StyleSheet.create({
   container: {
