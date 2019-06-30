@@ -1,8 +1,7 @@
 import ScanHero from './ScanHero';
 import ScanButton from './ScanButton';
 import ScanResult from './ScanResult';
-import HistoryList from './HistoryList';
-import LikedList from './LikedList';
+import List from './List';
 import ListItem from './ListItem';
 import ScreenHeader from './ScreenHeader';
 
@@ -10,8 +9,7 @@ export {
   ScanHero,
   ScanButton,
   ScanResult,
-  HistoryList,
-  LikedList,
+  List,
   ListItem,
   ScreenHeader,
 }

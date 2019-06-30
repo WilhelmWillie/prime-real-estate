@@ -2,14 +2,11 @@ import React, { useEffect } from 'react';
 import { StyleSheet, View, Text, Button, FlatList } from 'react-native';
 
 import ListItem from './ListItem';
-import appStore from '../store';
 
-export default () => {
-  const [appState] = appStore();
-
+export default ({ listData }) => {
   const keyExtractor = (item, index) => index.toString();
 
-  const renderHistoryItems = (item) => {
+  const renderListItem = (item) => {
     return (
       <ListItem item={item} />
     )
@@ -18,9 +15,8 @@ export default () => {
   return (
     <View style={styles.container}>
       <FlatList
-        data={appState.history}
-        extraData={appState}
-        renderItem={({item}) => renderHistoryItems(item)}
+        data={listData}
+        renderItem={({item}) => renderListItem(item)}
         keyExtractor={keyExtractor}
       />
     </View>

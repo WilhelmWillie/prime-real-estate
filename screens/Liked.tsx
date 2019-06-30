@@ -1,14 +1,19 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-import { ScreenHeader, LikedList } from '../components';
+import { ScreenHeader, List } from '../components';
+import appStore from '../store';
 
-export default () => (
-  <View style={styles.container}>
-    <ScreenHeader title="Liked" />
-    <LikedList />
-  </View>
-)
+export default () => {
+  const [appState] = appStore();
+
+  return (
+    <View style={styles.container}>
+      <ScreenHeader title="Liked" />
+      <List listData={appState.history} />
+    </View>
+  )
+}
 
 const styles = StyleSheet.create({
   container: {
