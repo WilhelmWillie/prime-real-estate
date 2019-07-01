@@ -17,6 +17,6 @@ const initialState : InitialStateType = {
   history: [],
 };
 
-const appStore = useAppState(React, initialState, actions);
+const useuseAppStore = useAppState(React, initialState, actions);
 
-export default appStore;
+export default useuseAppStore;

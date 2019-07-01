@@ -3,7 +3,7 @@ import { StyleSheet, View, Text, Button, FlatList } from 'react-native';
 
 import ListItem from './ListItem';
 
-export default ({ listData }) => {
+export default ({ listData, appState }) => {
   const keyExtractor = (item, index) => index.toString();
 
   const renderListItem = (item) => {
@@ -16,6 +16,7 @@ export default ({ listData }) => {
     <View style={styles.container}>
       <FlatList
         data={listData}
+        extraData={appState}
         renderItem={({item}) => renderListItem(item)}
         keyExtractor={keyExtractor}
       />

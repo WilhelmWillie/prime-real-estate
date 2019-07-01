@@ -1,10 +1,10 @@
 import React from 'react';
 import { StyleSheet, View, Text, Button } from 'react-native';
 
-import appStore from '../store';
+import useAppStore from '../store';
 
 export default ({result}) => {
-  const appActions = appStore()[1];
+  const appActions = useAppStore()[1];
 
   const handleLikePress = () => {
     appActions.like.likeItem(result);

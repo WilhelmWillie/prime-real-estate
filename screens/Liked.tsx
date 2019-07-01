@@ -2,15 +2,15 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import { ScreenHeader, List } from '../components';
-import appStore from '../store';
+import useAppStore from '../store';
 
 export default () => {
-  const [appState] = appStore();
+  const [appState] = useAppStore();
 
   return (
     <View style={styles.container}>
       <ScreenHeader title="Liked" />
-      <List listData={appState.history} />
+      <List listData={appState.liked} appState={appState} />
     </View>
   )
 }

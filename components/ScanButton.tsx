@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
 import { StyleSheet, View, Button } from 'react-native';
 
-import appStore from '../store';
+import useAppStore from '../store';
 
 export default () => {
-  const [appState, appActions] = appStore();
+  const [appState, appActions] = useAppStore();
 
   const handlePress = () => {
     appActions.scan.getResult()

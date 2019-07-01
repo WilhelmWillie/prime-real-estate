@@ -2,10 +2,10 @@ import React from 'react';
 import { StyleSheet, View, TouchableWithoutFeedback as Touchable, Text, Button } from 'react-native';
 import { withNavigation } from 'react-navigation';
 
-import appStore from '../store';
+import useAppStore from '../store';
 
 const ListItem = ({navigation, item}) => {
-  const appActions = appStore()[1];
+  const appActions = useAppStore()[1];
 
   const handlePress = () => {
     appActions.listItem.viewResult(item);
