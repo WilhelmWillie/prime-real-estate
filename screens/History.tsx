@@ -10,7 +10,7 @@ export default () => {
   return (
     <View style={styles.container}>
       <ScreenHeader title="History" />
-      <List listData={appState.history} appState={appState} />
+      <List listData={appState.history} appState={appState} emptyListText="You haven't viewed any results"/>
     </View>
   )
 }
