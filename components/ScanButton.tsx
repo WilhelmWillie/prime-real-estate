@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { StyleSheet, View, Button } from 'react-native';
+import { StyleSheet, View, Text, TouchableHighlight } from 'react-native';
 
 import useAppStore from '../store';
 
@@ -11,9 +11,9 @@ export default () => {
   }
 
   return (
-    <View style={styles.container}>
-      <Button onPress={handlePress} title='Scan' />
-    </View>
+    <TouchableHighlight onPress={handlePress} style={styles.container} underlayColor='#ededed'>
+      <Text style={styles.buttonText}>Scan</Text>
+    </TouchableHighlight>
   )
 }
 
@@ -22,7 +22,6 @@ const styles = StyleSheet.create({
     position: 'absolute',
     width: '80%',
     height: 60,
-    color: 'white',
     backgroundColor: 'white',
     alignItems: 'center',
     justifyContent: 'center',
@@ -34,4 +33,8 @@ const styles = StyleSheet.create({
     zIndex: 10,
     bottom: -30,
   },
+  buttonText: {
+    color: '#FFA25D',
+    fontSize: 18,
+  }
 });
