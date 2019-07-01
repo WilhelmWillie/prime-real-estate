@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, Animated, Text } from 'react-native';
+import { StyleSheet, Animated } from 'react-native';
+import styled from 'styled-components';
 
 import ScanButton from './ScanButton';
 
@@ -30,7 +31,7 @@ export default ({ result }) => {
         outputRange: [`${RESULT_HEIGHT}%`, `${DEFAULT_HEIGHT}%`]
       })
     }}>
-      <Text style={styles.description}>{result ? 'Scan Result' : 'Prime Real Estate'}</Text>
+      <HeroLabel>{result ? 'Scan Result' : 'Prime Real Estate'}</HeroLabel>
 
       <ScanButton />
     </Animated.View>
@@ -47,11 +48,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     position: 'relative',
     zIndex: 10,
-  },
-  description: {
-    color: 'white',
-    fontSize: 34,
-    fontWeight: '700',
-    textTransform: 'uppercase',
-  },
+  }
 });
+
+const HeroLabel = styled.Text`
+  color: ${p => p.theme.colors.white};
+  fontSize: 34;
+  fontWeight: 700;
+  textTransform: uppercase;
+`;

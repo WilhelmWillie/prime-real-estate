@@ -1,5 +1,8 @@
-import { Scan, History, Liked } from './screens';
+import React from 'react';
 import { createBottomTabNavigator, createAppContainer } from 'react-navigation';
+import { ThemeProvider } from 'styled-components';
+import { Scan, History, Liked } from './screens';
+import { Theme as theme } from './shared';
 
 const TabNavigator = createBottomTabNavigator({
   History,
@@ -11,4 +14,8 @@ const TabNavigator = createBottomTabNavigator({
 
 const AppContainer = createAppContainer(TabNavigator);
 
-export default AppContainer;
+export default () => (
+  <ThemeProvider theme={theme}>
+    <AppContainer />
+  </ThemeProvider>
+);

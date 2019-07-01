@@ -1,40 +1,36 @@
-import React, { useContext } from 'react';
-import { StyleSheet, View, Text, TouchableHighlight } from 'react-native';
+import React from 'react';
+import styled from 'styled-components';
 
 import useAppStore from '../store';
 
 export default () => {
-  const [appState, appActions] = useAppStore();
+  const appActions = useAppStore()[1];
 
   const handlePress = () => {
     appActions.scan.getResult()
   }
 
   return (
-    <TouchableHighlight onPress={handlePress} style={styles.container} underlayColor='#ededed'>
-      <Text style={styles.buttonText}>Scan</Text>
-    </TouchableHighlight>
+    <Container onPress={handlePress} underlayColor='#ededed'>
+      <ButtonLabel>Scan</ButtonLabel>
+    </Container>
   )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    position: 'absolute',
-    width: '80%',
-    height: 60,
-    backgroundColor: 'white',
-    alignItems: 'center',
-    justifyContent: 'center',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.3,
-    shadowRadius: 2,
-    borderRadius: 999,
-    zIndex: 10,
-    bottom: -30,
-  },
-  buttonText: {
-    color: '#FFA25D',
-    fontSize: 18,
-  }
-});
+const Container = styled.TouchableHighlight`
+  position: absolute;
+  width: 80%;
+  height: 60px;
+  background-color: white;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 2px 2px rgba(0,0,0,0.3);
+  border-radius: 999px;
+  z-index: 10;
+  bottom: -30px;
+`;
+
+const ButtonLabel = styled.Text`
+  color: ${p => p.theme.colors.primary};
+  font-size: 18;
+`;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text, Button } from 'react-native';
+import styled from 'styled-components';
 
 import useAppStore from '../store';
 
@@ -11,70 +11,76 @@ export default ({result}) => {
   }
 
   return (
-    <View style={styles.container}>
+    <Container>
       {
         result ? (
-          <View style={styles.card}>
-            <Text style={styles.neighborhood}>{result.neighborhood}</Text>
-            <Text style={styles.street}>{result.street}</Text>
-            <Text style={styles.avgValueHeader}>Average Home Price</Text>
-            <Text style={styles.avgValue}>{result.avgValue}</Text>
+          <Card>
+            <NeighborhoodLabel>{result.neighborhood}</NeighborhoodLabel>
+            <StreetLabel>{result.street}</StreetLabel>
+            <AvgValueHeaderLabel>Average Home Price</AvgValueHeaderLabel>
+            <AvgValueLabel>{result.avgValue}</AvgValueLabel>
 
-            <Button onPress={handleLikePress} title="Like" />
-          </View>
+            <LikeButton onPress={handleLikePress} title="Like" />
+          </Card>
         ) : (
-          <Text>...</Text>
+          <NoResultLabel>Scan to find nearby housing prices</NoResultLabel>
         )
       }
-    </View>
+    </Container>
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    width: '100%',
-    backgroundColor: '#F6F6F6',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 20,
-  },
-  card: {
-    backgroundColor: '#FFFFFF',
-    padding: 32,
-    flex: 1,
-    width: '100%',
-    marginTop: 30,
-    borderRadius: 16,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.18,
-    shadowRadius: 4,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  neighborhood: {
-    fontSize: 32,
-    textTransform: 'uppercase',
-    color: '#666666',
-    marginBottom: 16,
-  },
-  street: {
-    fontSize: 30,
-    fontWeight: '200',
-    color: '#666666',
-    marginBottom: 16,
-  },
-  avgValueHeader: {
-    fontSize: 20,
-    color: '#A5A5A5',
-    textTransform: 'uppercase',
-    marginBottom: 16,
-  },
-  avgValue: {
-    fontSize: 48,
-    color: '#256CE1',
-    fontWeight: '100',
-  },
-});
+const Container = styled.View`
+  flex: 1;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+`;
+
+const Card = styled.View`
+  background-color: #FFFFFF;
+  padding: 32px;
+  flex: 1;
+  width: 100%;
+  margin-top: 30px;
+  border-radius: 16px;
+  box-shadow: 0px 2px 4px rgba(0,0,0,0.18);
+  align-items: center;
+  justify-content: center;
+`;
+
+const NeighborhoodLabel = styled.Text`
+  font-size: 32;
+  text-transform: uppercase;
+  color: #666666;
+  margin-bottom: 16px;
+`;
+
+const StreetLabel = styled.Text`
+  font-size: 30;
+  color: #666666;
+  font-weight: 200;
+  margin-bottom: 16px;
+`;
+
+const AvgValueHeaderLabel = styled.Text`
+  font-size: 20;
+  text-transform: uppercase;
+  color: #A5A5A5;
+  margin-bottom: 16px;
+`;
+
+const AvgValueLabel = styled.Text`
+  font-size: 48;
+  color: #256CE1;
+  font-weight: 100;
+`;
+
+const LikeButton = styled.Button`
+`;
+
+const NoResultLabel = styled.Text`
+  color: #666666;
+  font-size: 28;
+`
