@@ -4,6 +4,7 @@ import ScanResult from './ScanResult';
 import List from './List';
 import ListItem from './ListItem';
 import ScreenHeader from './ScreenHeader';
+import ScreenContainer from './ScreenContainer';
 
 export {
   ScanHero,
@@ -12,4 +13,5 @@ export {
   List,
   ListItem,
   ScreenHeader,
+  ScreenContainer,
 }

@@ -1,25 +1,15 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
 
-import { ScreenHeader, List } from '../components';
+import { ScreenContainer, ScreenHeader, List } from '../components';
 import useAppStore from '../store';
 
 export default () => {
   const [appState] = useAppStore();
 
   return (
-    <View style={styles.container}>
+    <ScreenContainer>
       <ScreenHeader title="Liked" />
       <List listData={appState.liked} appState={appState} emptyListText="You haven't liked any results"/>
-    </View>
+    </ScreenContainer>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#F6F6F6',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

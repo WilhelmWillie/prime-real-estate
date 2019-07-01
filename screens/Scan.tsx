@@ -1,27 +1,16 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
-
 import useAppStore from '../store';
 
-import { ScanHero, ScanResult } from '../components';
+import { ScreenContainer, ScanHero, ScanResult } from '../components';
 
 export default () => {
   const appState = useAppStore()[0];
   const { result } = appState;
 
   return (
-    <View style={styles.container}>
+    <ScreenContainer>
       <ScanHero result={result} />
       <ScanResult result={result} />
-    </View>
+    </ScreenContainer>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#F6F6F6',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
