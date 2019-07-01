@@ -12,7 +12,7 @@ export default ({ title }) => {
 const styles = StyleSheet.create({
   container: {
     width: '100%',
-    paddingTop: 50,
+    paddingTop: 60,
     paddingBottom: 30,
     color: 'white',
     backgroundColor: '#FFA25D',
