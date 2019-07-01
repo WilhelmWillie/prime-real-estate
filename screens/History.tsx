@@ -9,7 +9,7 @@ export default () => {
 
   return (
     <View style={styles.container}>
-      <ScreenHeader title="Liked" />
+      <ScreenHeader title="History" />
       <List listData={appState.history} appState={appState} />
     </View>
   )
