@@ -3,16 +3,18 @@ import styled from 'styled-components';
 
 import useAppStore from '../store';
 
-export default () => {
+export default ({ loading }) => {
   const appActions = useAppStore()[1];
 
   const handlePress = () => {
     appActions.scan.getResult()
   }
 
+  const buttonText = loading ? 'Scanning' : 'Scan';
+
   return (
     <Container onPress={handlePress} underlayColor='#ededed'>
-      <ButtonLabel>Scan</ButtonLabel>
+      <ButtonLabel>{buttonText}</ButtonLabel>
     </Container>
   )
 }

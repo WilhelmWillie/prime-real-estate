@@ -1,31 +1,39 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/native';
 
 import useAppStore from '../store';
 
-export default ({result}) => {
+export default ({ result, loading }) => {
   const appActions = useAppStore()[1];
 
   const handleLikePress = () => {
     appActions.like.likeItem(result);
   }
 
+  const renderResultCard = () => {
+    return result ? (
+      <Card>
+        <NeighborhoodLabel>{result.neighborhood}</NeighborhoodLabel>
+        <StreetLabel>{result.street}</StreetLabel>
+        <AvgValueHeaderLabel>Average Home Price</AvgValueHeaderLabel>
+        <AvgValueLabel>{result.avgValue}</AvgValueLabel>
+
+        <LikeButton onPress={handleLikePress} title="Like" />
+      </Card>
+    ) : (
+      <NoResultLabel>Scan to find nearby housing prices</NoResultLabel>
+    )
+  }
+
+  const renderLoading = () => {
+    return (
+      <Loading>Scanning...</Loading>
+    )
+  }
+
   return (
     <Container>
-      {
-        result ? (
-          <Card>
-            <NeighborhoodLabel>{result.neighborhood}</NeighborhoodLabel>
-            <StreetLabel>{result.street}</StreetLabel>
-            <AvgValueHeaderLabel>Average Home Price</AvgValueHeaderLabel>
-            <AvgValueLabel>{result.avgValue}</AvgValueLabel>
-
-            <LikeButton onPress={handleLikePress} title="Like" />
-          </Card>
-        ) : (
-          <NoResultLabel>Scan to find nearby housing prices</NoResultLabel>
-        )
-      }
+      {loading ? renderLoading() : renderResultCard()}
     </Container>
   );
 };
@@ -79,6 +87,11 @@ const AvgValueLabel = styled.Text`
 
 const LikeButton = styled.Button`
 `;
+
+const Loading = styled.Text`
+  color: #666666;
+  font-size: 28;
+`
 
 const NoResultLabel = styled.Text`
   color: #666666;

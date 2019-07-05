@@ -8,20 +8,30 @@ const DEFAULT_HEIGHT = 50;
 const RESULT_HEIGHT = 34;
 const ANIMATION_DURATION = 400;
 
-export default ({ result }) => {
+export default ({ result, loading }) => {
   const heightAnim = useState(new Animated.Value(DEFAULT_HEIGHT))[0];
 
   useEffect(() => {
-    if (result) {
-      Animated.timing(
-        heightAnim,
-        {
-          toValue: RESULT_HEIGHT,
-          duration: ANIMATION_DURATION
-        }
-      ).start()
+    if (!loading) {
+      if (result) {
+        Animated.timing(
+          heightAnim,
+          {
+            toValue: RESULT_HEIGHT,
+            duration: ANIMATION_DURATION
+          }
+        ).start()
+      }
+    } else {
+     Animated.timing(
+       heightAnim,
+       {
+         toValue: DEFAULT_HEIGHT,
+         duration: ANIMATION_DURATION
+       }
+     ).start()
     }
-  }, [result ? 1 : 0]);
+  }, [result ? 1 : 0, loading ? 1 : 0]);
 
   return (
     <Animated.View style={{
@@ -33,7 +43,7 @@ export default ({ result }) => {
     }}>
       <HeroLabel>{result ? 'Scan Result' : 'Prime Real Estate'}</HeroLabel>
 
-      <ScanButton />
+      <ScanButton loading={loading} />
     </Animated.View>
   )
 }

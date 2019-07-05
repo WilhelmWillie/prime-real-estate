@@ -1,6 +1,6 @@
 import React from 'react';
 import { TouchableWithoutFeedback as Touchable } from 'react-native';
-import styled from 'styled-components';
+import styled from 'styled-components/native';
 import { withNavigation } from 'react-navigation';
 
 import useAppStore from '../store';

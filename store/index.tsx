@@ -9,12 +9,14 @@ interface InitialStateType {
   result: ResultType,
   liked: Array<ResultType>,
   history: Array<ResultType>,
+  loading: boolean,
 }
 
 const initialState : InitialStateType = {
   result: undefined,
   liked: [],
   history: [],
+  loading: false,
 };
 
 const useuseAppStore = useAppState(React, initialState, actions);
