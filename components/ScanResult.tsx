@@ -18,7 +18,9 @@ export default ({ result, loading }) => {
         <AvgValueHeaderLabel>Average Home Price</AvgValueHeaderLabel>
         <AvgValueLabel>{result.avgValue}</AvgValueLabel>
 
-        <LikeButton onPress={handleLikePress} title="Like" />
+        <LikeButton onPress={handleLikePress} underlayColor='#ededed'>
+          <LikeButtonText>Like</LikeButtonText>
+        </LikeButton>
       </Card>
     ) : (
       <NoResultLabel>Scan to find nearby housing prices</NoResultLabel>
@@ -85,7 +87,17 @@ const AvgValueLabel = styled.Text`
   font-weight: 100;
 `;
 
-const LikeButton = styled.Button`
+const LikeButton = styled.TouchableHighlight`
+  background-color: #FFFFFF;
+  border-width: 1px
+  border-color: #666666;
+  border-radius: 16px;
+  margin-top: 24px;
+  padding: 12px 16px;
+`;
+
+const LikeButtonText = styled.Text`
+  color: #666666;
 `;
 
 const Loading = styled.Text`
