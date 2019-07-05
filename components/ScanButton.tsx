@@ -6,7 +6,8 @@ import useAppStore from '../store';
 export default ({ loading }) => {
   const appActions = useAppStore()[1];
 
-  const handlePress = () => {
+  const handlePress = async () => {
+    await appActions.location.getLocation();
     appActions.scan.getResult()
   }
 

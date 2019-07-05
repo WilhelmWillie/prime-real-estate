@@ -10,13 +10,21 @@ interface InitialStateType {
   liked: Array<ResultType>,
   history: Array<ResultType>,
   loading: boolean,
+  location: {
+    hasPermission: boolean,
+    data: Object
+  }
 }
 
 const initialState : InitialStateType = {
-  result: undefined,
+  result: null,
   liked: [],
   history: [],
   loading: false,
+  location: {
+    hasPermission: true,
+    data: null
+  }
 };
 
 const useuseAppStore = useAppState(React, initialState, actions);
