@@ -19,7 +19,7 @@ export default ({ result, loading }) => {
         <AvgValueLabel>{result.avgValue}</AvgValueLabel>
 
         <LikeButton onPress={handleLikePress} underlayColor='#ededed'>
-          <LikeButtonText>Like</LikeButtonText>
+          <LikeButtonText>{ result.liked ? 'Liked' : 'Like'}</LikeButtonText>
         </LikeButton>
       </Card>
     ) : (
