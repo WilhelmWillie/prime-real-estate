@@ -12,7 +12,8 @@ interface InitialStateType {
   loading: boolean,
   location: {
     hasPermission: boolean,
-    data: Object
+    address: Object,
+    coords: Object,
   }
 }
 
@@ -23,7 +24,8 @@ const initialState : InitialStateType = {
   loading: false,
   location: {
     hasPermission: true,
-    data: null
+    address: null,
+    coords: null,
   }
 };
 

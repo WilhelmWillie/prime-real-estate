@@ -11,13 +11,14 @@ export const getLocation = async (store : any) => {
     return;
   }
 
-  const location =  await Location.getCurrentPositionAsync({});
-  const postalAddress = await Location.reverseGeocodeAsync({
-    latitude: location.coords.latitude,
-    longitude: location.coords.longitude
-  })
-
+  const { coords } =  await Location.getCurrentPositionAsync({});
+  const address = await Location.reverseGeocodeAsync({
+    latitude: coords.latitude,
+    longitude: coords.longitude
+  });
+  
   store.setState ({ location: {
-    data: postalAddress
+    coords,
+    address
   }});
 }
