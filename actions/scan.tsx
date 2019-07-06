@@ -58,7 +58,7 @@ const getPropertyAverageValue = async (latitude : number, longitude: number, sta
       }
   });
 
-  // TEMPORARY SIMULATED DELAY
+  // Simulated delay :)
   await new Promise(
     (resolve) => {
       setTimeout(
@@ -67,6 +67,10 @@ const getPropertyAverageValue = async (latitude : number, longitude: number, sta
       )
     }
   );
+
+  if (!closestRegion) {
+    return null;
+  }
 
   return {
     neighborhood: closestRegion.name[0],
@@ -81,12 +85,22 @@ export const getResult = async store => {
   const { latitude, longitude } = store.state.location.coords;
   const { region, city, street } = store.state.location.address[0];
 
-  const { neighborhood, avgValue } = await getPropertyAverageValue(latitude, longitude, region, city);
+  const processedScanData = await getPropertyAverageValue(latitude, longitude, region, city);
+
+  // Null result
+  if (!processedScanData) {
+    store.setState({
+      loading: false
+    });
+
+    alert('Scan failed. Please try in a different location');
+    return;
+  }
 
   const result = {
-    neighborhood,
     street,
-    avgValue,
+    neighborhood: processedScanData.neighborhood,
+    avgValue: processedScanData.avgValue,
     scanTime: Date.now(),
   }
 

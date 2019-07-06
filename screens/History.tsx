@@ -9,7 +9,7 @@ export default () => {
   return (
     <ScreenContainer>
       <ScreenHeader title="History" />
-      <List listData={appState.history} appState={appState} emptyListText="You haven't viewed any results"/>
+      <List listData={appState.history} appState={appState} emptyListText="You haven't scanned any neighborhoods"/>
     </ScreenContainer>
   )
 }

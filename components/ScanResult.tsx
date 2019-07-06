@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components/native';
+import { Share } from 'react-native';
 
 import useAppStore from '../store';
 
@@ -10,6 +11,16 @@ export default ({ result, loading }) => {
     appActions.like.likeItem(result);
   }
 
+  const handleSharePress = async () => {
+    try {
+      await Share.share({
+        message: `I just scanned my location using Prime Real Estate and found out that the average home price in ${result.neighborhood} is ${result.avgValue}!`
+      });
+    } catch (error) {
+      alert(error.message);
+    }
+  }
+
   const renderResultCard = () => {
     return result ? (
       <Card>
@@ -18,12 +29,18 @@ export default ({ result, loading }) => {
         <AvgValueHeaderLabel>Average Home Price</AvgValueHeaderLabel>
         <AvgValueLabel>{result.avgValue}</AvgValueLabel>
 
-        <LikeButton onPress={handleLikePress} underlayColor='#ededed'>
-          <LikeButtonText>{ result.liked ? 'Liked' : 'Like'}</LikeButtonText>
-        </LikeButton>
+        <ActionButtonContainer>
+          <ActionButton onPress={handleLikePress} underlayColor='#ededed'>
+            <ActionButtonText>{ result.liked ? 'Liked' : 'Like'}</ActionButtonText>
+          </ActionButton>
+
+          <ActionButton onPress={handleSharePress} underlayColor='#ededed'>
+            <ActionButtonText>Share</ActionButtonText>
+          </ActionButton>
+        </ActionButtonContainer>
       </Card>
     ) : (
-      <NoResultLabel>Scan to find nearby housing prices</NoResultLabel>
+      <NoResultLabel>Scan to find nearby neighborhood housing prices</NoResultLabel>
     )
   }
 
@@ -87,17 +104,28 @@ const AvgValueLabel = styled.Text`
   font-weight: 100;
 `;
 
-const LikeButton = styled.TouchableHighlight`
+const ActionButtonContainer = styled.View`
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 24px;
+`;
+
+const ActionButton = styled.TouchableHighlight`
+  flex: 1;
   background-color: #FFFFFF;
   border-width: 1px
   border-color: #666666;
   border-radius: 16px;
-  margin-top: 24px;
-  padding: 12px 16px;
+  margin-left: 12px;
+  margin-right: 12px;
+  padding: 12px 16px; 
 `;
 
-const LikeButtonText = styled.Text`
+const ActionButtonText = styled.Text`
   color: #666666;
+  text-align: center;
 `;
 
 const Loading = styled.Text`
@@ -108,4 +136,6 @@ const Loading = styled.Text`
 const NoResultLabel = styled.Text`
   color: #666666;
   font-size: 28;
+  width: 70%;
+  text-align: center;
 `

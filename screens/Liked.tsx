@@ -9,7 +9,7 @@ export default () => {
   return (
     <ScreenContainer>
       <ScreenHeader title="Liked" />
-      <List listData={appState.liked} appState={appState} emptyListText="You haven't liked any results"/>
+      <List listData={appState.liked} appState={appState} emptyListText="You haven't liked any scans"/>
     </ScreenContainer>
   )
 }
