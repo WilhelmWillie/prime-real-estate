@@ -4,9 +4,14 @@ import styled from 'styled-components/native';
 import useAppStore from '../store';
 
 export default ({ loading }) => {
-  const appActions = useAppStore()[1];
+  const [appState, appActions] = useAppStore();
 
   const handlePress = async () => {
+    // Prevent multiple scans from running
+    if (appState.loading) {
+      return;
+    }
+
     await appActions.location.getLocation();
     appActions.scan.getResult()
   }
