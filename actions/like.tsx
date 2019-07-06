@@ -3,9 +3,7 @@ const unlikeItem = (store, item) => {
 
   // Will improve this once results have IDs attached to them
   const newLiked = store.state.liked.filter(likedItem => (
-    likedItem.neighborhood != item.neighborhood &&
-    likedItem.street != item.street &&
-    likedItem.avgValue != item.avgValue
+    likedItem.id != item.id
   ));
 
   store.setState({ liked: newLiked });

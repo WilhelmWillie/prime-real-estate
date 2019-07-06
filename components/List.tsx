@@ -4,7 +4,7 @@ import styled from 'styled-components/native';
 import ListItem from './ListItem';
 
 export default ({ listData, appState, emptyListText }) => {
-  const keyExtractor = (item, index) => index.toString();
+  const keyExtractor = (item) => item.id;
 
   const renderListItem = (item) => {
     return (

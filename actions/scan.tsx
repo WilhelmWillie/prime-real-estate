@@ -1,4 +1,5 @@
 import { parseString } from 'react-native-xml2js';
+import { uniqueId } from 'lodash';
 
 import { ZILLOW_API_KEY } from '../utils/getConstants';
 
@@ -98,6 +99,7 @@ export const getResult = async store => {
   }
 
   const result = {
+    id: uniqueId('result_'),
     street,
     neighborhood: processedScanData.neighborhood,
     avgValue: processedScanData.avgValue,
