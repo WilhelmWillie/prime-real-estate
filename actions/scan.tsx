@@ -27,7 +27,7 @@ const distanceBetweenCoords = (coordA : Coordinate, coordB : Coordinate) : numbe
     return earthRadiusKm * c;
 }
 
-const getPropertyAverageValue = async (longitude : number, latitude: number, state: string, city: string) => {
+const getPropertyAverageValue = async (latitude : number, longitude: number, state: string, city: string) => {
   const API_URL = `https://www.zillow.com/webservice/GetRegionChildren.htm?zws-id=${ZILLOW_API_KEY}&state=${state}&city=${city}&childtype=neighborhood`;
   const apiResponse = await fetch(API_URL);
   const apiText = await apiResponse.text();
@@ -48,7 +48,7 @@ const getPropertyAverageValue = async (longitude : number, latitude: number, sta
         // Calculate distance from provided coordinates
         // IF shorter, promote current region
 
-        const regionCoords = { longitude: parseFloat(region.latitude[0]), latitude: parseFloat(region.longitude[0]) };
+        const regionCoords = { latitude: parseFloat(region.latitude[0]), longitude: parseFloat(region.longitude[0]) };
 
         const currDistance = distanceBetweenCoords({ latitude, longitude }, regionCoords);
         if (currDistance < closestDistance) {

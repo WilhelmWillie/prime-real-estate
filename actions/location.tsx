@@ -14,9 +14,9 @@ export const getLocation = async (store : any) => {
   const { coords } =  await Location.getCurrentPositionAsync({});
   const address = await Location.reverseGeocodeAsync({
     latitude: coords.latitude,
-    longitude: coords.longitude
+    longitude: coords.longitude 
   });
-  
+
   store.setState ({ location: {
     coords,
     address
