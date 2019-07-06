@@ -86,7 +86,8 @@ export const getResult = async store => {
   const result = {
     neighborhood,
     street,
-    avgValue
+    avgValue,
+    scanTime: Date.now(),
   }
 
   // Add item to history

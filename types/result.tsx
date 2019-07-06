@@ -3,4 +3,5 @@ export interface ResultType {
   street: string,
   avgValue: number,
   liked: boolean,
+  scanTime: Date,
 };

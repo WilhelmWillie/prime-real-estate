@@ -2,6 +2,7 @@ import React from 'react';
 import { TouchableWithoutFeedback as Touchable } from 'react-native';
 import styled from 'styled-components/native';
 import { withNavigation } from 'react-navigation';
+import moment from 'moment';
 
 import useAppStore from '../store';
 
@@ -19,6 +20,9 @@ const ListItem = ({navigation, item}) => {
         <NeighborhoodLabel>{item.neighborhood}</NeighborhoodLabel>
         <StreetLabel>{item.street}</StreetLabel>
         <AvgValueLabel>{item.avgValue}</AvgValueLabel>
+        <Footer>
+          <TimeAgoLabel>{moment(item.scanTime).fromNow()}</TimeAgoLabel>
+        </Footer>
       </Container>
     </Touchable>
   )
@@ -53,3 +57,18 @@ const AvgValueLabel = styled.Text`
   font-weight: 200;
   color: ${p => p.theme.colors.secondary};
 `;
+
+const Footer = styled.View`
+  display: flex;
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top-width: 0.5px;
+  border-top-color: #666666;
+`
+
+const TimeAgoLabel = styled.Text`
+  font-size: 14;
+  font-weight: 700;
+  color: #666666;
+  text-transform: uppercase;
+`
