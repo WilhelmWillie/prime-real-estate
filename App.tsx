@@ -1,4 +1,5 @@
 import React from 'react';
+import { StatusBar } from 'react-native';
 import { createBottomTabNavigator, createAppContainer } from 'react-navigation';
 import { ThemeProvider } from 'styled-components';
 import { Scan, History, Liked } from './screens';
@@ -14,8 +15,12 @@ const TabNavigator = createBottomTabNavigator({
 
 const AppContainer = createAppContainer(TabNavigator);
 
-export default () => (
-  <ThemeProvider theme={theme}>
-    <AppContainer />
-  </ThemeProvider>
-);
+export default () => {
+  StatusBar.setBarStyle('light-content', true);
+  
+  return (
+    <ThemeProvider theme={theme}>
+      <AppContainer />
+    </ThemeProvider>
+  );
+}
