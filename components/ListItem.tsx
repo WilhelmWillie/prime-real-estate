@@ -5,6 +5,7 @@ import { withNavigation } from 'react-navigation';
 import moment from 'moment';
 
 import useAppStore from '../store';
+import formatCurrency from '../utils/formatCurrency';
 
 const ListItem = ({navigation, item}) => {
   const appActions = useAppStore()[1];
@@ -19,7 +20,7 @@ const ListItem = ({navigation, item}) => {
       <Container>
         <NeighborhoodLabel>{item.neighborhood}</NeighborhoodLabel>
         <StreetLabel>{item.street}</StreetLabel>
-        <AvgValueLabel>{item.avgValue}</AvgValueLabel>
+        <AvgValueLabel>{formatCurrency(item.avgValue)}</AvgValueLabel>
         <Footer>
           <TimeAgoLabel>{moment(item.scanTime).fromNow()}</TimeAgoLabel>
         </Footer>

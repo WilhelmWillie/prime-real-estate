@@ -3,6 +3,7 @@ import styled from 'styled-components/native';
 import { Share } from 'react-native';
 
 import useAppStore from '../store';
+import formatCurrency from '../utils/formatCurrency';
 
 export default ({ result, loading }) => {
   const appActions = useAppStore()[1];
@@ -14,7 +15,7 @@ export default ({ result, loading }) => {
   const handleSharePress = async () => {
     try {
       await Share.share({
-        message: `I just scanned my location using Prime Real Estate and found out that the average home price in ${result.neighborhood} is ${result.avgValue}!`
+        message: `I just scanned my location using Prime Real Estate and found out that the average home price in ${result.neighborhood} is ${formatCurrency(result.avgValue)}!`
       });
     } catch (error) {
       alert(error.message);
@@ -27,7 +28,7 @@ export default ({ result, loading }) => {
         <NeighborhoodLabel>{result.neighborhood}</NeighborhoodLabel>
         <StreetLabel>{result.street}</StreetLabel>
         <AvgValueHeaderLabel>Average Home Price</AvgValueHeaderLabel>
-        <AvgValueLabel>{result.avgValue}</AvgValueLabel>
+        <AvgValueLabel>{formatCurrency(result.avgValue)}</AvgValueLabel>
 
         <ActionButtonContainer>
           <ActionButton onPress={handleLikePress} underlayColor='#ededed'>
@@ -120,7 +121,7 @@ const ActionButton = styled.TouchableHighlight`
   border-radius: 16px;
   margin-left: 12px;
   margin-right: 12px;
-  padding: 12px 16px; 
+  padding: 12px 16px;
 `;
 
 const ActionButtonText = styled.Text`
