@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components/native';
-import { Share } from 'react-native';
+import { Share, ActivityIndicator, View } from 'react-native';
 
 import useAppStore from '../store';
 import formatCurrency from '../utils/formatCurrency';
@@ -41,13 +41,15 @@ export default ({ result, loading }) => {
         </ActionButtonContainer>
       </Card>
     ) : (
-      <NoResultLabel>Scan to find nearby neighborhood housing prices</NoResultLabel>
+      <NoResultLabel>Find the average housing prices of properties in your area</NoResultLabel>
     )
   }
 
   const renderLoading = () => {
     return (
-      <Loading>Scanning...</Loading>
+      <View>
+        <ActivityIndicator size="large" color="#666666" />
+      </View>
     )
   }
 

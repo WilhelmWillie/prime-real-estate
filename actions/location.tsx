@@ -11,14 +11,18 @@ export const getLocation = async (store : any) => {
     return;
   }
 
+  // Set app state to loading to show loading spinner
+  store.setState({ loading: true });
+
   const { coords } =  await Location.getCurrentPositionAsync({});
   const address = await Location.reverseGeocodeAsync({
     latitude: coords.latitude,
-    longitude: coords.longitude 
+    longitude: coords.longitude
   });
 
-  store.setState ({ location: {
-    coords,
-    address
-  }});
+  const newLocation = store.state.location;
+  newLocation.coords = coords;
+  newLocation.address = address;
+
+  store.setState({ location: newLocation});
 }

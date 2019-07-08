@@ -80,9 +80,6 @@ const getPropertyAverageValue = async (latitude : number, longitude: number, sta
 }
 
 export const getResult = async store => {
-  // Set app state to loading to show loading spinner
-  store.setState({ loading: true });
-
   const { latitude, longitude } = store.state.location.coords;
   const { region, city, street } = store.state.location.address[0];
 
