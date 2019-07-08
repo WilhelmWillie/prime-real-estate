@@ -81,14 +81,14 @@ const Card = styled.View`
 `;
 
 const NeighborhoodLabel = styled.Text`
-  font-size: 32;
+  font-size: 28;
   text-transform: uppercase;
   color: #666666;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 `;
 
 const StreetLabel = styled.Text`
-  font-size: 30;
+  font-size: 24;
   color: #666666;
   font-weight: 200;
   margin-bottom: 12px;
@@ -102,7 +102,7 @@ const AvgValueHeaderLabel = styled.Text`
 `;
 
 const AvgValueLabel = styled.Text`
-  font-size: 48;
+  font-size: 36;
   color: #256CE1;
   font-weight: 100;
 `;
@@ -123,7 +123,7 @@ const ActionButton = styled.TouchableHighlight`
   border-radius: 16px;
   margin-left: 12px;
   margin-right: 12px;
-  padding: 12px 16px;
+  padding: 8px 12px;
 `;
 
 const ActionButtonText = styled.Text`
