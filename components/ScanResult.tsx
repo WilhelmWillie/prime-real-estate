@@ -84,21 +84,21 @@ const NeighborhoodLabel = styled.Text`
   font-size: 32;
   text-transform: uppercase;
   color: #666666;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 `;
 
 const StreetLabel = styled.Text`
   font-size: 30;
   color: #666666;
   font-weight: 200;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 `;
 
 const AvgValueHeaderLabel = styled.Text`
   font-size: 20;
   text-transform: uppercase;
   color: #A5A5A5;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 `;
 
 const AvgValueLabel = styled.Text`
@@ -130,11 +130,6 @@ const ActionButtonText = styled.Text`
   color: #666666;
   text-align: center;
 `;
-
-const Loading = styled.Text`
-  color: #666666;
-  font-size: 28;
-`
 
 const NoResultLabel = styled.Text`
   color: #666666;
